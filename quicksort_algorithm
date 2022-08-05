@@ -1,0 +1,2 @@
+the quick sort algorithm is an algorithm that when implimented sorts an array into an ordered list.
+it has a pivot point. its places the pivot point at a point such that all points before the point are less than the pivot and all values after the pivot is greater than the pivot
