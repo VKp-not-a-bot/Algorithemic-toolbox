@@ -1,9 +1,12 @@
 
 
 
-#print("enter numbers")
-#s = input()
-#num = list(map(int,s.split(' ')))
+print("enter numbers")
+s = input()
+num = list(map(int,s.split(' ')))
+
+
+
 def swap(set,i,j):
     temp = set[i]
     set[i] = set[j]
@@ -13,38 +16,71 @@ def pivot(set,first_number,last_number):
      i = first_number+1
      j = last_number
      while(i<j):
-        print("i is " +str(i)+" and the value of j is "+str(j)+ " value of array is "+str(set))
-        if(set[i]<set[first_number]):
+        
+        #print("i is " +str(i)+" and the value of j is "+str(j)+ " value of array is "+str(set)+" fist number is "+str(first_number)+" last number is "+str(last_number))
+        if(set[i]<=set[first_number]):
             i+=1
-        if(set[j]>set[first_number]):
+        if(i>=j):
+           # print(str(i)+ "das is right")
+            break
+        if(set[j]>=set[first_number]):
             j-=1
         if(i>=j):
-            print(str(i)+ "das is right")
+           # print(str(i)+ "das is right")
             break
         if(set[i]>set[first_number] and set[j]<set[first_number]):
             swap(set,i,j)
             i+=1
             j-=1
-     swap(set,0,i)
-        
+        if(i>=j):
+           # print(str(i)+ "das is right")
+            break
+     if(i== first_number+1):
+        if(set[i]<set[first_number]):
+            swap(set,first_number,i)
             
+            return i
+        else:
+            
+            return i
+            
+     else:
+        if(set[first_number]>set[i]):
+           swap(set,first_number,i)
+           return i
+        else:
+            swap(set,first_number,i-1)
+            return i-1
+
+        
+        
 
 
-     print("i is " +str(i)+" and the value of j is "+str(j)+ " value of array is "+str(set))
-"""""
-def quicksort(set,a,b):
-    if(length(set)==1):
-        return null 
-    p = pivot(set, a ,b)
-    quicksort(set,a,p-1)
-    quicksort(set,p+1,b)
-
-
+     
+    
+def quicksort(set,first,last):
+    
+    #print("first = "+str(first)+" last is "+ str(last)+" the string is "+str(set))
+    if(first==last):
+        
+        return 0
+    p = pivot(set,first,last)
+    #print(p)
     
     
+    if(p==first):
+        quicksort(set,p+1,last)
+    elif(p==last):
+        quicksort(set,first,p-1)
+    else:
+        quicksort(set,first,p-1)
+        quicksort(set,p+1,last)
 
-"""
-set = [7,1,5,2,3,6,4,13]
-a = 0
-b = 7
-pivot(set,a,b)
+#print(pivot(s,0,2))
+quicksort(num,0,len(num)-1)
+#print(pivot(s,0,5))
+print(num)
+
+
+
+
